@@ -1,6 +1,5 @@
 /* ===== Seleção de plataforma -> abre o jogo ===== */
-const plataformas = document.querySelectorAll('input[name="plataforma"]');
-const seletorPlataforma = document.getElementById('seletor-plataforma');
+
 const jogoVP = document.getElementById('vp');
 let plataforma = null;
 const joy = {x:0, y:0}; // analógico virtual (-1..1) // "computador" ou "celular"

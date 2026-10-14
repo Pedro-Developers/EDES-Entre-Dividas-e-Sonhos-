@@ -40,43 +40,10 @@ h1, h2, h3, h4, h5, h6, p {
     width: 100%;
 }
 
-.seletor-plataforma {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.opcoes-plataforma {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
 
-.opcao-plataforma input[type="radio"] {
-    display: none;
-}
 
-.opcao-plataforma img {
-    width: 150px;
-    height: auto;
-    cursor: pointer;
-    border: 3px solid transparent;
-    border-radius: 8px;
-    transition: all 0.2s ease-in-out;
-    background: rgba(255, 255, 255, 0.08);
-}
 
-.opcao-plataforma img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
 
-.opcao-plataforma input[type="radio"]:checked + img {
-    border-color: #007bff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
-}
 
 .hidden {
     display: none !important;
@@ -111,7 +78,7 @@ html,body{
     overflow:hidden;
     font-family:"Courier New",monospace;font-weight:bold;
     color:var(--w)}
-#vp{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+#vp{position:fixed;inset:0;height:100dvh;display:flex;align-items:center;justify-content:center}
 
 #w{width:640px;height:360px;position:relative;transform-origin:center;flex:none;overflow:hidden;background:#000}
 
@@ -179,3 +146,5 @@ button:hover:not(:disabled){background:var(--g);color:#000}button:disabled{opaci
 #bE{position:absolute;right:max(28px,env(safe-area-inset-right));bottom:max(36px,env(safe-area-inset-bottom));width:80px;height:80px;border-radius:50%;font-size:26px;background:rgba(46,204,113,.3)}
 #bEsc{position:absolute;right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));width:44px;height:44px;border-radius:10px;font-size:16px;padding:0;background:rgba(4,20,10,.6)}
 #touch .off{display:none}
+
+html,body{overscroll-behavior:none;touch-action:manipulation}
