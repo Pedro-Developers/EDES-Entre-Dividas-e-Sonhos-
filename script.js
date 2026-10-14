@@ -1,20 +1,8 @@
-/* ===== Seleção de plataforma -> abre o jogo ===== */
-
-const jogoVP = document.getElementById('vp');
-let plataforma = null;
-const joy = {x:0, y:0}; // analógico virtual (-1..1) // "computador" ou "celular"
-
-plataformas.forEach((radio) => {
-  radio.addEventListener('change', () => {
-    if (!radio.checked) return;
-    plataforma = radio.value;
-    seletorPlataforma.classList.add('hidden');
-    jogoVP.classList.remove('hidden');
-    if (plataforma === 'celular') document.getElementById('touch').classList.remove('hidden');
-    fit();   // recalcula a escala agora que o jogo está visível
-    menu();  // mostra o menu do jogo (NOVO JOGO, CONTINUAR...)
-  });
-});
+/* ===== Plataforma detectada automaticamente ===== */
+const joy = {x:0, y:0}; // analógico virtual (-1..1)
+const isTouch = matchMedia('(pointer:coarse)').matches || 'ontouchstart' in window;
+let plataforma = isTouch ? 'celular' : 'computador';
+if (isTouch) document.getElementById('touch').classList.remove('hidden');
 
 "use strict";
 const $=s=>document.querySelector(s),cv=$("#c"),cx=cv.getContext("2d"),W=640,H=360;
@@ -188,9 +176,9 @@ addEventListener("keydown",e=>{const k=e.key.toLowerCase();
  else if(mode==="paused"&&k==="escape"){closeOv();mode="play"}
  else if(mode==="combat"&&"1234".includes(k))Cb.act(+k)});
 addEventListener("keyup",e=>{keys[e.key.toLowerCase()]=false});
-function fit(){const s=Math.min(innerWidth/W,innerHeight/H);$("#w").style.transform="scale("+s+")"}
-addEventListener("resize",fit);fit();
-S=fresh();requestAnimationFrame(loop); // menu() só é chamado após escolher a plataforma
+function fit(){const vw=window.visualViewport?visualViewport.width:innerWidth,vh=window.visualViewport?visualViewport.height:innerHeight;const s=Math.min(vw/W,vh/H);$("#w").style.transform="scale("+s+")"}
+addEventListener("resize",fit);addEventListener("orientationchange",()=>setTimeout(fit,200));if(window.visualViewport)visualViewport.addEventListener("resize",fit);fit();
+S=fresh();menu();requestAnimationFrame(loop);
 
 /* ===== Controles de toque ===== */
 (function(){
