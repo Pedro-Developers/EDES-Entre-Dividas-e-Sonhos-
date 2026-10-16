@@ -78,23 +78,38 @@ html,body{
     overflow:hidden;
     font-family:"Courier New",monospace;font-weight:bold;
     color:var(--w)}
-#vp{position:fixed;
-    inset:0;
-    height:
-    100dvh;
-    display:flex;
-    align-items:center;
-    justify-content:center
+#vp{
+       position: fixed;
+    inset: 0;
+    height: 100dvh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 1. SEGREDO: Adiciona a mesma cor escura do jogo na tela toda */
+    background-color: #020d06; 
+
+    /* 2. Cria as linhas horizontais verdes do terminal para a tela INTEIRA */
+    background-image: repeating-linear-gradient(
+        0deg,
+        rgba(10, 58, 28, 0.3) 0px,
+        rgba(10, 58, 28, 0.3) 1px,
+        transparent 1px,
+        transparent 28px
+    );
+
 }
 
 #w{
-    width:640px;
-    height:360px;
-    position:relative;
-    transform-origin:center;
-    flex:none;
-    overflow:hidden;
-    background:#000
+      width: 640px;
+    height: 360px;
+    position: relative;
+    transform-origin: center;
+    flex: none;
+    overflow: hidden;
+    /* Remove o background preto rígido para mesclar com o fundo total */
+    background: transparent; 
 }
 
 canvas{position:absolute;
